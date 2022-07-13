@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WeatherData : Decodable, Identifiable {
+struct WeatherData : Codable, Identifiable {
     var id: Int
     var name: String
     var main: Main
@@ -16,7 +16,7 @@ struct WeatherData : Decodable, Identifiable {
     var wind: Wind
 }
 
-struct Main: Decodable {
+struct Main: Codable {
     var temp: Double
     var pressure: Int
     var humidity: Int
@@ -24,13 +24,12 @@ struct Main: Decodable {
     var temp_max: Double
 }
 
-struct Weather: Decodable{
+struct Weather: Codable{
     var id: Int
-    var main: String
     var description: String
 }
 
-struct Wind: Decodable{
+struct Wind: Codable{
     var speed: Double
     var deg: Int
 }
