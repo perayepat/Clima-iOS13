@@ -16,6 +16,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var searchTextField: UITextField!
     var weatherForCity : String = ""
     
+    var weatherManager = WeatherManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,8 +31,6 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     ///The textfield class is responsible for triggering these methods
     ///With multiple texfields it depends on which text field triggered the method first
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        print(searchTextField.text!)
         searchTextField.endEditing(true)
         return true
     }
@@ -46,6 +46,9 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //when code is done editing
+        if let city = searchTextField.text {
+            weatherManager.fetchWeather(cityName: city)
+        }
         weatherForCity = searchTextField.text ?? ""
         searchTextField.text = ""
     }
