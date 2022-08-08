@@ -12,10 +12,11 @@ struct WeatherModel{
     let conditionId : Int
     let cityName : String
     let temperature: Double
-    var tempName : String {
+    var tempString : String {
         return String(format: "%.1f", temperature)
     }
     
+    //MARK: Taking condition from the weather API and returning it as a SF Symbool
     var conditionName: String{
         switch conditionId{
         case 200...232:
