@@ -24,6 +24,11 @@ struct WeatherManager {
         peformRequest(with:urlString)
     }
     
+    func fetchWeather(latitude: Double, longitude: Double){
+        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
+        peformRequest(with: urlString)
+    }
+    
     func peformRequest(with urlString: String){
         guard let url = URL(string: urlString) else { return }
         let session  = URLSession(configuration: .default)
